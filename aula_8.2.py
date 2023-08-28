@@ -10,3 +10,5 @@ alunos = [
 
 print(alunos[0]["nome"])
 
+for n,valor in enumerate(alunos.values()):
+    print()

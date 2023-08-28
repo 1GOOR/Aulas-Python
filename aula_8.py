@@ -62,9 +62,11 @@ print(f"Pegando as Chave e os Valores \n{itens}\n\n")
 
 aluno["cpf"] = "123.121.121-23"
 
-print(f"pegando")
+print(f"pegando a chave e o valor")
 for chave,valor in aluno.items():
-    print(f"Chave: {chave} valor: {valor}")
+    print(f"Chave: {chave}  Valor: {valor}\n\n\ ")
+
+
 
 
 
