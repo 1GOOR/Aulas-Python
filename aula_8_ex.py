@@ -23,8 +23,12 @@ while True:
     telefones.append(tel_1)
     telefones.append(tel_2)
 
-    dicionario = {"nome": nome, "rg": rg, "data_nasc": data_nasc, "telefones": telefones}
-    usuarios.append(dicionario)
+    print("cadastrando despesas")
+
+
+
+    usuario = {"nome": nome, "rg": rg, "data_nasc": data_nasc, "telefones": telefones}
+    usuarios.append(usuario)
 
     resposta = input("Sim ou Nao").strip()[0].lower()
     if resposta == "n":
