@@ -8,7 +8,7 @@ print(f"Seja bem Vidndo!!")
 
 while True:  #loop para
 
-    print("-"*13, "Menu", "-"*13)
+    print("-"*17, "Menu", "-"*17)
     print("""
     Para cadastrar digite -> 1 
     Para listar os usuarios degite -> 2
@@ -63,7 +63,7 @@ while True:  #loop para
 
         print("-" * 10, "Lista de usuarios", "-" * 10)
         if len(usuarios) <= 0:
-            print("nenhum usuario cadastrado.")
+            print("        nenhum usuario cadastrado.")
         else:
             for index in usuarios:
                 #este for percorre os usuarios
