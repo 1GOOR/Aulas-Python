@@ -1,10 +1,10 @@
 validar = set()
 logins = list()
 
-print("sistema de cadastro")
+print(f"Sistema de cadastro\n digite 'exit' para sair")
 while True:
     usuario = list()
-    login = input("Login: ")
+    login = input("informe o Login do usuario: ")
     tamanho = len(validar)
 
     if login.strip()[0].lower() == "e":
@@ -20,12 +20,19 @@ while True:
         usuario.append(senha)
         logins.append(usuario)
 
-entrada =input ("Login: ")
+print(f"\n--------Logon--------")
 
-for i in logins:
-
-    if entrada == i[0]:
-        print("bem vindo")
-
-
-
+while True:
+    entrada = input("Login: ")
+    for i in logins:
+        if entrada == i[0]:
+            senha = input("senha: ")
+            if senha == i[1]:
+                print("bem vindo")
+                break
+            else:
+                print("senha incorreta")
+                break
+        else:
+            print("login invalido")
+            break
