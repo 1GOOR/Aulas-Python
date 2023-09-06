@@ -1,6 +1,6 @@
 #funcao
 
-import datetime
+from _datetime import datetime
 
 """"
 ano_nasc: str
@@ -70,3 +70,5 @@ while True:
     x = x + 1
 
 print(pessoas)
+
+datetime.today().year

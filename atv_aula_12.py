@@ -29,7 +29,7 @@ while True:
 
     mensagem()
 
-    resposta =input("opcao: ")
+    resposta = input("opcao: ")
 
     if resposta == "1":
         tipo = input("Qual o Tipo do produto: ")
@@ -44,17 +44,15 @@ while True:
 
 
     elif resposta == "2":
+
         for posicao in produtos:
             print(f"{posicao.values()}")
 
-    elif resposta =="4":
-        soma = 0
+    elif resposta == "4":
+
         for i in produtos:
-            num: int = i.get("quatidade")
-
-            soma = 0
-
-            pr
+            num = int(i.get("quatidade"))
+            print(num)
 
     elif resposta == "3":
         print(f"voce saiu do sistema\n\n\n")
