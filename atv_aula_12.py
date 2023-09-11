@@ -45,8 +45,11 @@ while True:
 
     elif resposta == "2":
 
-        for posicao in produtos:
-            print(f"{posicao.values()}")
+        for i in produtos:
+            print(f"")
+
+        #for posicao in produtos:
+        #    #print(f"{posicao.values()}")
 
     elif resposta == "4":
 
