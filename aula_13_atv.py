@@ -5,8 +5,8 @@
 except FileExistsError as e:
     pass
 """
-BD = open("atv_13_BD", "a")
-while True:
-    nome = input("Informe um nome: ")
-    #idade = input(f"informe a idade de {nome}: ")
-    BD.write(nome)
+BD = open("atv_13_BD.txt", "a")
+
+for i in range(5):
+    nome = input(f"Informe {i+1}º nome: ")
+    BD.write(f'{nome}\n')
