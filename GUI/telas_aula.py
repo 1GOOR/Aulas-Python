@@ -31,6 +31,7 @@ while True:
 
             janela_1["-VALOR1-"].update(value="")
             janela_1["-VALOR2-"].update(value="")
+
     except Exception as e:
 
         sg.Popup("digite apenas numeros seu cavalo")
