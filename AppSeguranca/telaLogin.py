@@ -10,12 +10,12 @@ def janelaLogin():
         [sg.Push(background_color="#2F6073"), sg.Image("img/login.png", background_color="#2F6073"), sg.Push(background_color="#2F6073")],
         [sg.Image("img/1.png", background_color="#2F6073"), sg.Text("Login", size=7, background_color="#2F6073", text_color="#E8BF58", font=" roboto 20"),sg.Input(size=20, background_color="#ffffff", font=" roboto 15", key="-LOGIN-")],
         [sg.Image("img/2.png", background_color="#2F6073"), sg.Text("Senha", size=7, background_color="#2F6073", text_color="#E8BF58", font=" roboto 20"),sg.Input(size=20, background_color="#ffffff", font=" roboto 15", password_char="*", key="-SENHA-")],
-        [sg.Push(background_color="#2F6073"), sg.Button("Entrar", size=10, font="arial 15", pad=25, mouseover_colors=("#E8BF58", "#FFE054"), button_color="#E8BF58", key="-BOTAO-"), sg.Push(background_color="#2F6073")],
+        [sg.Push(background_color="#2F6073"), sg.Button("Entrar", size=10, font="arial 15", pad=25, mouseover_colors=("#E8BF58", "#FFE054"), button_color="#E8BF58", key="-ENTRAR-"), sg.Push(background_color="#2F6073")],
         [sg.Push(background_color="#2F6073"), sg.Text("Recuperar Senha", background_color="#2F6073", text_color="#E8BF58"),sg.Push(background_color="#2F6073")]
 
     ]
 
-    return sg.Window("Tela Login", layout, background_color="#2F6073")
+    return sg.Window("Tela Login", layout, background_color="#2F6073", finalize=True)
 
 
 def recuperarSenha():
@@ -27,10 +27,10 @@ def recuperarSenha():
     [sg.Button("Recuperar Senha", font="arial 15", pad=25, mouseover_colors=("#E8BF58", "#FFE054"), button_color="#E8BF58")], [sg.Text("", visible=False, background_color="#2F6073", text_color="#E8BF58")]
 
     ]
-    return sg.Window("Recuperar Senha", layout, background_color="#2F6073")
+    return sg.Window("Recuperar Senha", layout, background_color="#2F6073", finalize=True)
 
 
-def telaLogin():
+def telacadastro():
 
     cargos = ["Gerente", "TI", "Administração", "Recursos Humanos"]
 
@@ -69,14 +69,13 @@ def telaLogin():
          sg.Text("Nivel", size=5, background_color="#2F6073", text_color="#FFFFFF", font=("Helvetica", 14)),
          sg.Radio("ADM", "Ratio1", text_color="#FFFFFF", font=("Helvetica", 14), background_color="#2F6073"),
          sg.Radio("Comum", "Ratio1", default=True, text_color="#FFFFFF", font=("Helvetica", 14), background_color="#2F6073"),
-         sg.Push(background_color="#2F6073"),
-         sg.Button("Cadastrar", size=20),
-         sg.Push(background_color="#2F6073"),
-         sg.Push(background_color="#2F6073"),
-         sg.Push(background_color="#2F6073"),
+         sg.Button("Deletar"),
+         sg.Button("Atualizar", size=20),
+         sg.Input(),
+         sg.Button("Buscar")
          ]
     ]
-    return sg.Window("Recuperar Senha", layout, background_color="#2F6073")
+    return sg.Window("Recuperar Senha", layout, background_color="#2F6073", finalize=True)
 
 def contatos():
 
@@ -112,6 +111,89 @@ def contatos():
          sg.Input(size=22, background_color="#ffffff", font=("Helvetica", 14))]
 
     ]
-    return sg.Window("Contatos", layout, background_color="#2F6073")
+    return sg.Window("Contatos", layout, background_color="#2F6073", finalize=True)
 
-contatos().read()
+
+def baterPonto():
+
+    cabecalho = ["Entrada", "Saida Alimentaçao", "volta alimentaçao", "Saida"]
+
+    layout = [
+        [sg.Image("img/voltar.png", background_color="#2F6073", enable_events=True),
+         sg.Image("img/logo.png", background_color="#2F6073"),
+         sg.Push(background_color="#2F6073"),
+         sg.Text("Bater Ponto", font=("Helvetica", 18), text_color="#ffffff", background_color="#2F6073"),
+         sg.Push(background_color="#2F6073")],
+
+        [sg.HSep()],
+
+        [sg.Text("CPF", text_color="#FFFFFF", font=("Helvetica", 14), background_color="#2F6073"),
+         sg.Input(size=15, background_color="#ffffff", font=("Helvetica", 14)),
+         sg.Image("img/pesquisa.png", background_color="#2F6073", enable_events=True),
+         sg.Text("Data", text_color="#FFFFFF", font=("Helvetica", 14), background_color="#2F6073"),
+         sg.Input(size=8, background_color="#ffffff", font=("Helvetica", 14), disabled=True),
+         sg.Image("foto/usuario.png", background_color="#2F6073")
+         ],
+
+        [sg.HSep()],
+
+        [sg.Button("Entrada", size=12),
+         sg.Button("Saida Alimentação", size=16),
+         sg.Button("Volta Alimentação", size=16),
+         sg.Button("Saida", size=12)],
+
+        [sg.Table(headings=cabecalho, values=[])]
+
+    ]
+    return sg.Window("Tela bater ponto", layout, background_color="#2F6073", finalize=True)
+
+
+def janelaMenu():
+    layout = [
+        [sg.Image("img/voltar.png", background_color="#2F6073", enable_events=True),
+         sg.Image("img/logo.png", background_color="#2F6073"),
+         sg.Push(background_color="#2F6073"),
+         sg.Text("MENU", font=("Helvetica", 18), text_color="#ffffff", background_color="#2F6073"),
+         sg.Push(background_color="#2F6073")],
+
+        [sg.HSep()],
+
+        [sg.Button("Cadastrar", key="-CADASTRAR-")],
+        [sg.Button("Listar Funcionario", key="-LISTAR-")],
+        [sg.Button("Bater Ponto", key="-PONTO-")]
+
+    ]
+    return sg.Window("Menu", layout, background_color="#2F6073", finalize=True)
+
+
+telalogin, telacasdasto, telacontato, telarecuperasenha, telabateponto, telamenu = janelaLogin(), None, None, None, None, None
+
+
+while True:
+
+    window, events, values = sg.read_all_windows()
+
+    if window == telalogin and events == sg.WINDOW_CLOSED:
+        break
+
+    if window == telalogin and events == "-ENTRAR-":
+        nome = values["-LOGIN-"]
+        senha = values["-SENHA-"]
+
+        if nome in ["carlos", "maria", "pedro"] and senha == "123":
+            sg.Popup("Seja Bem Vindo!", nome)
+            telamenu = janelaMenu()
+            telalogin.hide()
+
+    ###############################################################
+
+    if window == telamenu and events == "-CADASTRAR-":
+        telamenu.hide()
+        telacasdasto = telacadastro()
+
+
+    if window == telamenu and events == sg.WINDOW_CLOSED():
+        break
+
+    if window == telacasdasto and events == sg.WINDOW_CLOSED():
+        break
