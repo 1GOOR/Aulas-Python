@@ -223,6 +223,7 @@ while True:
    if window == telaPonto and events == sg.WIN_CLOSED:
        break
 
-
+####
+###
 # destruido o arquivo tk usado para pegar as fontes
 #root.destroy()
