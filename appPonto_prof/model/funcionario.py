@@ -86,7 +86,7 @@ class Funcionario:
         return anoAtual - int(str(self.data_nasc).split("/")[2])
 
 
-nome = "ze"
+"""nome = "ze"
 cpf = "1211324"
 data_nasc = "20/01/2000"
 cargo = "adm"
@@ -94,6 +94,6 @@ contato = 1
 senha = "123"
 nivel = "adm"
 
-f1 = Funcionario(nome, cpf, data_nasc, cargo, contato, senha, nivel)
+f1 = Funcionario(nome, cpf, data_nasc, cargo, senha, nivel)
 
-print(f1.idade())
+print(f1.idade())"""

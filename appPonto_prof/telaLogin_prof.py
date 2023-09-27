@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import PySimpleGUI as sg
 
+from appPonto_prof.controller.FuncionarioController import FuncionarioController
+
 """
 #Pegar nomes de fontes
 from tkinter import Tk, font
@@ -75,42 +77,38 @@ def janelaCadastrarFuncionario():
         [sg.HSep()],
 
         [sg.Text("Nome", background_color="#2F6073", font=fontTexto, size=10),
-         sg.Input(size=(70, 50), background_color="#FFFFFF", font=fontTexto),
+         sg.Input(size=(70, 50), background_color="#FFFFFF", font=fontTexto, key="-NOME-"),
          sg.Text("Nascimento", background_color="#2F6073", font=fontTexto),
-         sg.Input(size=20, background_color="#FFFFFF", font=fontTexto),
-         sg.Image("img/calendar.png", background_color="#2F6073")],
+         sg.Input(size=20, background_color="#FFFFFF", font=fontTexto, key="-NASCIMENTO-"),
+         sg.Image("img/calendar.png", background_color="#2F6073", key="-CALENDARIO-")],
 
         [sg.Text("CPF", background_color="#2F6073", font=fontTexto, size=10),
-         sg.Input(size=20, background_color="#FFFFFF", font=fontTexto),
+         sg.Input(size=20, background_color="#FFFFFF", font=fontTexto, key="-CPF-"),
          sg.Text("Cargo", background_color=cor_fundo, font=fontTexto, size=10),
-         sg.Combo(lista, size=30, default_value="Escolha o Cargos", font=fontTexto, button_arrow_color="#FFFFFF",
-                  button_background_color="#2F6073"),
+         sg.Combo(lista, size=30, default_value="Escolha o Cargos", font=fontTexto, button_arrow_color="#FFFFFF", button_background_color="#2F6073", key="-GARGO-"),
          sg.Text("Cadastrar Contato", size=15, font=fontTexto, background_color=cor_fundo),
-         sg.Image("img/contato.png", background_color="#2F6073", enable_events=True, key="-CONTATO-")],
+         sg.Image("img/contato.png", background_color="#2F6073", enable_events=True, key="-CONTATO-"),
+         sg.Text("ID", size=3, font=fontTexto, background_color=cor_fundo),
+         sg.Input(key="-ID_CONTATO-", size=6, background_color="#FFFFFF", font=fontTexto)],
 
         [sg.HSep()],
 
         [sg.Text("Senha", size=10, background_color=cor_fundo, font=fontTexto),
-         sg.Input(font=fontTexto, size=15, password_char='*'),
+         sg.Input(font=fontTexto, size=15, password_char='*', key="-SENHA-"),
          sg.Text("Nivel", font=fontTexto, background_color=cor_fundo),
          sg.Radio("ADM", "radio1", font=fontTexto, background_color=cor_fundo),
          sg.Radio("COMUM", "radio1", default=True, font=fontTexto, background_color=cor_fundo),
-         sg.Push(background_color=cor_fundo),
-         sg.Button("Cadastrar", font=fontTexto, size=20),
-         sg.Push(background_color=cor_fundo),
-         sg.FileBrowse(button_text='Imagem')],
-
+         sg.Button("Cadastrar", font=fontTexto, size=20, key="-CADASTRAR-"),
+         sg.Input(key="-PATH_PHOTO-"),
+         sg.FileBrowse("ADD FOTO", initial_folder="img", target="-PATH_PHOTO-"),
+         sg.Button("Carregar", key="-CARREGAR-")],
 
         [sg.HSep()],
 
-        [
-            [sg.Text(
-                "Observações de uso: \nCadastrar o nascimento use o calendario :\nA senha deve ter 6 caracteres:\nPara cadastrar o contato clique no icone:",
-                font=fontTexto, background_color=cor_fundo)]
-
-            , sg.Push(background_color=cor_fundo),
-            sg.Image("img/fundoCadastro.png", background_color=cor_fundo),
-            sg.Push(background_color=cor_fundo)],
+        [sg.Push(background_color=cor_fundo),
+         sg.Image("img/fundoCadastro.png", background_color=cor_fundo),
+         sg.Push(background_color=cor_fundo),
+         sg.Image(key="FOTO")],
 
         [sg.HSep()],
 
@@ -272,6 +270,9 @@ def janelaMenu():
 
 telaLogin, telaCadastrar, telaContato, telaListarUsuarios, telaPonto, telaMenu, telaRecuperaSenha = janelaLogin(), None, None, None, None, None, None
 
+
+#Inicio do Programa
+
 while True:
     window, events, values = sg.read_all_windows()
 
@@ -297,6 +298,31 @@ while True:
     if window == telaCadastrar and events == "-VOLTAR-":
         telaMenu.un_hide()
         telaCadastrar.hide()
+
+    #TELA DE CADASTRO DE FUNCIONARIO
+    if window == telaCadastrar and events == "-CADASTRAR-":
+        nome = values["-NOME-"]
+        cpf = values["-CPF-"]
+        data_nasc = values["-NASCIMENTO-"]
+        cargo = values["-GARGO-"]
+        id = values["-ID_CONTATO-"]
+        senha = values["-SENHA-"]
+        nivel= "Comum"
+
+        #testando a captura dos valores
+
+        FuncionarioController(nome, cpf, data_nasc, cargo, id, senha, nivel)
+
+        print("Valores")
+        print(nome)
+        print(cpf)
+        print(data_nasc)
+        print(cargo)
+        print(id)
+        print(senha)
+        print(nivel)
+
+        #FuncionarioControler(nome, cpf, ):
 
     if window == telaCadastrar and events == "-CONTATO-":
         telaContato = janelaContato()
