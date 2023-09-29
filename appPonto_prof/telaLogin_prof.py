@@ -313,7 +313,6 @@ while True:
 
         FuncionarioController(nome, cpf, data_nasc, cargo, id, senha, nivel)
 
-        print("Valores")
         print(nome)
         print(cpf)
         print(data_nasc)
