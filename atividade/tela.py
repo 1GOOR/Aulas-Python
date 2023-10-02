@@ -37,7 +37,7 @@ def telaCadastro():
          sg.Text("Quantidade", size=8), sg.Push(), sg.Input(key="-QUANTIDADE-", size=16)],
 
         [sg.Push(), sg.Button("Cadastrar", key="-CADASTRAR-"),
-         sg.Push(), sg.Button("Busca", key="-BUSCA-"), sg.Input(size=15, key="BSC"), sg.Push()],
+         sg.Push(), sg.Button("Busca", key="-BUSCA-"),sg.Push(), sg.Button("Total", key="-TOTAL-"), sg.Push(), sg.Input(size=15, key="-BSC-"), sg.Push()],
 
         [sg.HSep()],
 
@@ -89,20 +89,47 @@ while True:
 
             janela["-TABELA-"].update(values=printTabela())
 
-    """if envents == "-BUSCA-":
+    if envents == "-BUSCA-":
         
         with open("produtos.txt", "r+") as file:
 
-            #resposta = envents["-BSC-"]
+            contador = 0
+            resposta = values["-BSC-"]
             lista = []
-
             for linha in file:
                 arquivo = linha.split(" ")
-
-                print(arquivo)
                 lista.append(arquivo)
 
-                if linha[0].__contains__("ola"):
-                    sg.Popup("encontrou")"""
+            for i in lista:
+                if i[1] == resposta:
+                    sg.Popup(f"Produto encontrado")
+                elif len(lista) == contador+1:
+                    contador = 0
+                    sg.Popup(f"Produto nao encontrado")
+                contador += 1
+
+
+    if envents == "-TOTAL-":
+
+        with open("produtos.txt", "r+") as file:
+            contador = 0
+            resposta = values["-BSC-"]
+            lista = []
+            for linha in file:
+                arquivo = linha.split(" ")
+                lista.append(arquivo)
+            for i in lista:
+                if i[1] == resposta:
+                    valor = float(i[2])
+                    qnt = float(i[3])
+                    total = valor * qnt
+                    sg.Popup(total)
+                    break
+                elif len(lista) == contador + 1:
+                    contador = 0
+                    sg.Popup(f"nao foi possivel calcular")
+                    break
+                contador += 1
+
 
 
