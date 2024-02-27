@@ -23,8 +23,8 @@ def tornarADM(user: UsuarioComum):
     else:
         print("nao foi possivel cadastrar")
 
-def cadastrar(nome,cpf,senha,email):
-    usuario = UsuarioComum(nome,cpf,senha,email)
+def cadastrar(nome , cpf, senha, email):
+    usuario = UsuarioComum(nome, cpf, senha, email)
     UsuarioComum.usuarios.append(usuario)
     return usuario
 def isADM(user: UsuarioADM):
@@ -39,9 +39,8 @@ def verUsuarios(user: UsuarioComum):
 
 if __name__ == '__main__':
 
-    cadastrar("ze", "123.456.789", "*******","ze@gmail.com")
-    cadastrar("fabricio","45645","**","fab@gmail.com")
-
+    cadastrar("ze", "123.456.789", "*******", "ze@gmail.com")
+    cadastrar("fabricio", "45645", "**", "fab@gmail.com")
 
     verUsuarios(UsuarioADM)
 
